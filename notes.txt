@@ -36,3 +36,18 @@ This time we will use the req parameter, which short for "request."
 
 When Heroku runs our app, it sets an environment variable called process.env.PORT. 
 We're going to tell our app to use that port, if it has been set, and if not, default to port 80.
+
+const PORT = process.env.PORT || 3001;
+Now go down to where we have our application listening, and replace the hardcoded value with the PORT variable like so:
+
+app.listen(PORT, () => {
+  console.log(`API server now on port ${PORT}!`);
+});
+
+The req object gives us access to another property for this case, req.params. 
+Unlike the query object, the param object needs to be defined in the route path, with <route>/:<parameterName>.
+
+This time, the JSON response is a single object instead of an array. 
+Now let's return to the id route and update it so that if no record exists for the animal being searched for, 
+the client receives a 404 error. Remember that the 404 status code is meant to communicate to the client that the requested resource could not be found. 
+To send this error, we can just send the 404 error code with res.send() like this:
