@@ -1,0 +1,35 @@
+Setting up the server only takes two steps: we need to instantiate the server,
+ then tell it to listen for requests. To instantiate the server, add the following code to server.js:
+
+const app = express();
+
+Now we just need to use one method to make our server listen.
+ We're going to chain the listen() method onto our server to do it. 
+ To do that, add the following code to the end of server.js:
+
+app.listen(3001, () => {
+  console.log(`API server now on port 3001!`);
+});
+
+run npm start to start server
+
+A website has an address, referred to as the host.
+ A college campus also has an address. 
+The host tells the client where to go, but it doesn't specify exactly where to go.
+
+The port is like a building/classroom; it gives the exact desination on the host.
+
+If you're browsing the internet, chances are you're visiting the address on one of two ports: 80 or 443.
+ 80 is typically used for sites that begin with http://,
+ and 443 is used for sites that begin with https://. This raises the question: Why are we using 3001 instead of 80 or 443?
+
+ The first is that the get() method requires two arguments.
+  The first is a string that describes the route the client will have to fetch from. 
+  The second is a callback function that will execute every time that route is accessed with a GET request.
+
+The second takeaway is that we are using the send() method from the res parameter (short for response) to send the string Hello! to our client.
+To send JSON, just change send to json. We do this to change the headers 
+(i.e., additional metadata that's sent with every request/response) so that the client knows it's receiving JSON.
+To create this query, we'll add another function called filterByQuery().
+ This is going to help us handle different kinds of queries. We will start by extracting the data from after the question mark. 
+This time we will use the req parameter, which short for "request."
