@@ -33,3 +33,6 @@ To send JSON, just change send to json. We do this to change the headers
 To create this query, we'll add another function called filterByQuery().
  This is going to help us handle different kinds of queries. We will start by extracting the data from after the question mark. 
 This time we will use the req parameter, which short for "request."
+
+When Heroku runs our app, it sets an environment variable called process.env.PORT. 
+We're going to tell our app to use that port, if it has been set, and if not, default to port 80.
