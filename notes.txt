@@ -51,3 +51,18 @@ This time, the JSON response is a single object instead of an array.
 Now let's return to the id route and update it so that if no record exists for the animal being searched for, 
 the client receives a 404 error. Remember that the 404 status code is meant to communicate to the client that the requested resource could not be found. 
 To send this error, we can just send the 404 error code with res.send() like this:
+
+For this lesson, our goal is to create an API endpoint that allows a user to add new animals to the JSON file storing all of our data.
+ We'll test out how it works using an application called Insomnia Core, which allows us to create API requests without worrying about a front end. 
+The following image shows how we'll use Insomnia Core to test this new endpoint:
+
+post request allow us to store data from client side on the server
+
+First, we used the app.use() method. This is a method executed by our Express.js server that mounts a 
+function to the server that our requests will pass through before getting to the intended endpoint. 
+The functions we can mount to our server are referred to as middleware.
+
+The express.urlencoded({extended: true}) method is a method built into Express.js. 
+It takes incoming POST data and converts it to key/value pairings that can be accessed in the req.body object. 
+The extended: true option set inside the method call informs our server that there may be sub-array data nested in it as well, 
+so it needs to look as deep into the POST data as possible to parse all of the data correctly.
